@@ -1,0 +1,7 @@
+toml
+Cython
+urllib3
+requests-doh
+PyTelegramBotAPI
+jsonpickle==2.0.0
+mysql-connector-python
