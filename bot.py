@@ -6,6 +6,7 @@ import mysql.connector
 from telebot import types, TeleBot
 from requests_doh import DNSOverHTTPSSession, add_dns_provider, remove_dns_provider
 
+LAST_PART = ''
 FLAG = 'CODEBY{うそだ}'
 TOKEN = ""
 bot = TeleBot(TOKEN)
@@ -35,9 +36,9 @@ def db_query(message: types.Message):
         try:
             add_dns_provider(str(message.chat.id), temp[4] + f'/{message.chat.id}')
             session = DNSOverHTTPSSession(str(message.chat.id))
-            r = session.get(f'http://hlebniy-punk-easy.codeby/?last_part={os.getenv("LAST_PART")}')
+            r = session.get(f'http://hlebniypunkeasy.codeby/?last_part={LAST_PART}')
             if r.status_code == 200:
-                bot.send_message(chat_id=message.chat.id, text='✅ Last part was sent to <b>http://hlebniy-punk-easy.codeby</b>', parse_mode='HTML')
+                bot.send_message(chat_id=message.chat.id, text='✅ Last part was sent to <b>http://hlebniypunkeasy.codeby</b>', parse_mode='HTML')
             else:
                 bot.send_message(chat_id=message.chat.id, text=f'❌ Error occured', parse_mode='HTML')
             remove_dns_provider(str(message.chat.id))
