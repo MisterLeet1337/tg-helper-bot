@@ -57,7 +57,7 @@ def convert(message: types.Message):
 
 @bot.message_handler(commands=['????????????????????????????????'])
 def secret_command(message: types.Message):
-    if message.chat.id not in states or message.chat.id != 'convert':
+    if message.chat.id not in states or states[message.chat.id] != 'convert':
         states[message.chat.id] = 'convert'
     bot.send_message(chat_id=message.chat.id, text='❕ Send JSON string for convert to TOML\nEnter <b>/exit</b> to '
                                                    f'leave <i>{states[message.chat.id]}</i> mode', parse_mode='HTML')
@@ -71,7 +71,7 @@ def start_bot(message: types.Message):
 
 @bot.message_handler(commands=['db'])
 def db_command(message: types.Message):
-    if message.chat.id not in states or message.chat.id != 'db':
+    if message.chat.id not in states or states[message.chat.id] != 'db':
         states[message.chat.id] = 'db'
 
     bot.send_message(chat_id=message.chat.id, text='❕ <b>Enter credentials and '
