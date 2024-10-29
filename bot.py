@@ -23,7 +23,7 @@ def connect_and_query(host, user, password, query):
         return e
 
 
-# name: Earth Is A Black Hole, key: ????????
+# name: Earth Is A Black Hole, key: ?????????
 def get_obfuscate_bot_username_tg(name, key):
     return 'bot_' + hashlib.sha256((''.join([x for x in hashlib.md5(name.encode()).hexdigest() if x.isdigit()] + [x for x in hashlib.md5(key.encode()).hexdigest() if x.isdigit()])[:20]).encode()).hexdigest()[:20] + '_bot'
 
